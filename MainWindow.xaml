@@ -1,0 +1,23 @@
+﻿<Window x:Class="imageExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:imageExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Image x:Name="imgPicture"
+               Height="100"
+               Source="https://mrmctavish.files.wordpress.com/2017/06/mctlogo.png" />
+        <Button x:Name="btnChangePic"
+                FontSize="24"
+                Content="Change Image"
+                Click="btnChangePic_Click"/>
+        <Button x:Name="btnChangeBack"
+                FontSize="24"
+                Content="ChangeBack"
+                Visibility="Hidden"
+                Click="btnChangeBack_Click"/>
+    </StackPanel>
+</Window>
