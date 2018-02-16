@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,19 +27,38 @@ namespace imageExample
 
         private void btnChangePic_Click(object sender, RoutedEventArgs e)
         {
-            int x = 2;
-            if (x > 0)
-                {
-                MessageBox.Show("greater!");
-                }
-            if (x <= 0) { MessageBox.Show("less than greater!"); }
-            if (x == 0) { MessageBox.Show("Equal!"); } else if (x == 1) { MessageBox.Show("it is 1!"); } else {
-                MessageBox.Show("nothing fit!");
-            }
-            BitmapImage bi = new BitmapImage(new Uri("https://i.ebayimg.com/images/i/251420608123-0-1/s-l1000.jpg"));
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.ShowDialog();
+            BitmapImage bi = new BitmapImage(new Uri(openFileDialog.FileName));
+
+            System.Windows.Media.ImageMetadata im = bi.Metadata;
+            MessageBox.Show(im.ToString());
+
+            WriteableBitmap bitmap = new WriteableBitmap(bi);
             imgPicture.Source = bi;
-            btnChangePic.Visibility = Visibility.Hidden;
-            btnChangeBack.Visibility = Visibility.Visible;
+
+             //bitmap
+/*            BitmapImage bi = new BitmapImage(new Uri(openFileDialog.FileName));
+            imgPicture.Source = bi;
+
+            int stride = bi.PixelWidth * 4;
+            int size = bi.PixelHeight * stride;
+            byte[] pixels = new byte[size];
+            bi.CopyPixels(pixels, stride, 0);
+
+            
+
+            int x = 0;
+            int y = 0;
+            int index = y * stride + 4 * x;
+
+
+            byte red = pixels[index];
+            byte green = pixels[index + 1];
+            byte blue = pixels[index + 2];
+            byte alpha = pixels[index+3];
+            MessageBox.Show(red.ToString()+", " + green.ToString() + ", " + blue.ToString());
+            */
         }
 
         private void btnChangeBack_Click(object sender, RoutedEventArgs e)
